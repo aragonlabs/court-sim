@@ -1,4 +1,4 @@
-# Court Simulator
+# Court Simulation 🔬 
 ------------
 This is a agent based simulation supporting Aragon's research towards a decentralized oracle for dispute resolution.
 
@@ -8,7 +8,7 @@ For each dispute the ***true*** result will be determined by the model, and each
 
 Each Juror will vote honestly with each of their tokens which have been drawn in the current step based on their belief. If the result does not align with global truth then the dispute will be appealed, and the model will select additional tokens until all tokens have participated in the dispute, or the verdict aligns with the truth.
 
-In this model we assume that all agents act honestly and we assume that the agents estimation is normally distributed around the truth. By itself this is not a particularly useful model, but it is intended to provide a baseline representation of the court mechanism, which can be extended study the dynamics of agents based on various more complex and realistic assumptions.
+In this model we assume that all agents act honestly and we assume that the agents estimation is normally distributed around the truth. By itself this is not a particularly useful model, but it is intended to provide a baseline representation of the court mechanism, which can be extended to study the dynamics of agents based on various more complex and realistic assumptions.
 
 ## Getting Started
 
