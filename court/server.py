@@ -32,8 +32,8 @@ server = ModularServer(
                                description="Choose how many Juror agents to include in the model"),
         "token_count": UserSettableParameter('slider', "Number of tokens", 40, 10, 400, 1,
                                    description="Choose how many tokens in supply, tokens are split evenly among jurors at initialization."),
-        "belief_deviation": UserSettableParameter('slider', "Belief Devation", 0.25, 0.01, 1, 0.01,
-                                   description="Standard deviation used for sampling belief from a normal distribution around the models true value"),
+        "threshold": UserSettableParameter('slider', "Belief Threshold", 1, 0.25, 5, 0.25,
+                                   description="Agents must sample within this many standard deviations from the true value to be coherent"),
         "penalty_pct": UserSettableParameter('slider', "Dispensation Percentage", 0.1, 0.01, 1, 0.01,
                                            description="Percentage of activated tokens which are redistributed from incoherent jurors to coherent")
 

@@ -25,7 +25,7 @@ class Juror(Agent):
         - Honest: Agent makes a noisy estimate of the models truth for a dispute and votes honestly
         - Consistent: Agent should not change belief even if activated by multiple tokens.
     '''
-    def __init__(self, unique_id, model, sigma):
+    def __init__(self, unique_id, model, sigma=1):
         super().__init__(unique_id, model)
         self.sigma = sigma
         self.tokens = self.model.token_count/self.model.juror_count
@@ -48,7 +48,9 @@ class Juror(Agent):
     def get_belief(self):
         ''' Return true or false based on a noisy estimate of model's true_value '''
         self.raw_belief = np.random.normal(self.model.true_value, self.sigma)
-        return self.model.true_value-self.model.threshold < self.raw_belief < self.model.true_value+self.model.threshold
+        lower_bound = self.model.true_value-(self.model.threshold*self.sigma)
+        upper_bound = self.model.true_value+(self.model.threshold*self.sigma)
+        return  lower_bound < self.raw_belief < upper_bound
 
 
     def step(self):

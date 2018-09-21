@@ -22,14 +22,13 @@ def compute_gini(model):
 
 class CourtModel(Model):
     """A model of a decentralized oracle for subjective disputes."""
-    def __init__(self, juror_count=20, token_count=40, belief_deviation=0.3, penalty_pct=0.5, threshold=0.5, base_dispute_size=5):
+    def __init__(self, juror_count=20, token_count=40, penalty_pct=0.5, threshold=1, base_dispute_size=5):
         super().__init__()
         self.schedule = CourtScheduler(self, base_dispute_size )
         self.current_id = 0
 
         self.penalty_pct = penalty_pct
-        self.threshold = 0.2
-        self.belief_deviation = belief_deviation
+        self.threshold = threshold
         self.juror_count = juror_count
         self.token_count = token_count
 
@@ -44,7 +43,7 @@ class CourtModel(Model):
         #self.datacollector = DataCollector({"Gini": compute_gini} )
 
         for j in range(0,juror_count):
-            juror = Juror(self.next_id(), self, self.belief_deviation)
+            juror = Juror(self.next_id(), self)
             self.schedule.add(juror)
 
         self.running = True
@@ -57,7 +56,7 @@ class CourtModel(Model):
         return self.current_id
 
     def new_dispute(self):
-        self.true_value = random.randint(0,1)
+        self.true_value = 0
         self.true_votes = 0
         self.false_votes = 0
         self.dispute_level = 1
