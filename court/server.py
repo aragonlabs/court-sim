@@ -28,7 +28,7 @@ server = ModularServer(
     [chart1,chart2],
     name="CourtModel",
     model_params={
-        "juror_count": UserSettableParameter('slider', "Number of juros", 20, 10, 100, 1,
+        "juror_count": UserSettableParameter('slider', "Number of jurors", 20, 10, 100, 1,
                                description="Choose how many Juror agents to include in the model"),
         "token_count": UserSettableParameter('slider', "Number of tokens", 40, 10, 400, 1,
                                    description="Choose how many tokens in supply, tokens are split evenly among jurors at initialization."),

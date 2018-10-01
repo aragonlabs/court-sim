@@ -41,3 +41,14 @@ $ python3 run.py
 ### View
 ------------
 The server should host it on [http://127.0.0.1:8521/]()
+
+In the main screen you will see:
+
+- A top bar menu, with flow controls to the right.
+- Some parameter sliders:
+  - Number of jurors included in the model.
+  - Belief threshold: Agents must sample within this many standard deviations from the true value to be coherent.
+  - Number of tokens in supply, tokens are split evenly among jurors at initialization.
+  - Dispensation percentage: Percentage of activated tokens which are redistributed from incoherent jurors to coherent. See [here](https://docs.google.com/document/d/12fsgREpfxkNgpFYpIOmHh2jkWoFM4siH_fQ2ppU-Uak/edit#) for a reference.
+- A main chart showing the amount of disputes, split in `susccessful` and `failed`.
+- Another chart showing the resulting [Gini coefficient](https://en.wikipedia.org/wiki/Gini_coefficient) for the inequality distribution of tokens after each dispute.
